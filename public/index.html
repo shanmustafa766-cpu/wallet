@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Wallet</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="logo">💼</span>
+          <div>
+            <h1>My Wallet</h1>
+            <p>Smart money management</p>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Wallet</h2>
+          <p class="summary-label">Total users</p>
+          <div class="summary-card">
+            <span id="totalUsers">0</span>
+          </div>
+          <p class="summary-label">Total balance</p>
+          <div class="summary-card">
+            <span id="totalBalance">$0.00</span>
+          </div>
+        </div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h2>Dashboard</h2>
+            <p>View users, deposits, withdrawals, and transactions.</p>
+          </div>
+          <button id="refreshButton" class="button button-secondary">Refresh</button>
+        </header>
+
+        <section class="grid grid-2">
+          <div class="card card-soft">
+            <h3>Add User</h3>
+            <form id="addUserForm" class="form-stack">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="John Doe" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="john@example.com" required />
+              </label>
+              <button type="submit" class="button button-primary">Create user</button>
+            </form>
+          </div>
+
+          <div class="card card-soft">
+            <h3>Quick Action</h3>
+            <form id="transactionForm" class="form-stack">
+              <label>
+                User
+                <select id="userSelect" required>
+                  <option value="">Select user</option>
+                </select>
+              </label>
+              <label>
+                Type
+                <select id="transactionType" required>
+                  <option value="deposit">Deposit</option>
+                  <option value="withdraw">Withdraw</option>
+                </select>
+              </label>
+              <label>
+                Amount
+                <input type="number" id="amountInput" placeholder="100" min="1" required />
+              </label>
+              <label>
+                Description
+                <input type="text" id="descriptionInput" placeholder="Dinner, salary, transfer..." />
+              </label>
+              <button type="submit" class="button button-primary">Submit</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="card card-soft">
+          <div class="section-header">
+            <h3>Users</h3>
+            <span class="tag" id="userCountTag">0 users</span>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Balance</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card card-soft">
+          <div class="section-header">
+            <h3>Recent Transactions</h3>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody id="transactionsTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
